@@ -1,0 +1,15 @@
+List Reverse( List L ){
+  if(!L) return L;
+	List s = NULL;
+	List t = L;
+	List temp;
+	while(t->Next != NULL){
+ 		temp = t->Next;
+		t->Next = s;
+		s = t;
+		t = temp;
+	}
+	t->Next = s;
+	return t;
+}
+//µ¥Á´±íÄæ×ª

@@ -1,0 +1,44 @@
+List MakeEmpty(){
+	List l = (List)malloc(sizeof(struct LNode));
+	l->Last = -1;
+	return l;
+}
+Position Find( List L, ElementType X ){
+	int i;
+    for(i = 0; i <= L->Last; i++){
+        if(X==L->Data[i]){
+            return i;
+        }
+    }
+    return ERROR;
+}
+bool Insert( List L, ElementType X, Position P ){
+	if(L->Last == MAXSIZE - 1) {
+		printf("FULL");
+		return false;
+	}
+	if(P > L->Last + 1 || P < 0 || P >= MAXSIZE){
+		printf("ILLEGAL POSITION");
+		return false; 
+	}
+	int i;
+	L->Last++;
+	for(i = L->Last; i > P; i--){
+		L->Data[i] = L->Data[i - 1];
+	}
+	L->Data[P] = X;
+	return true;
+}
+bool Delete( List L, Position P ){
+	if(P > L->Last || P < 0){
+		printf("POSITION %d EMPTY", P);
+		return false;
+	} 
+	int i;
+	for(i = P; i < L->Last; i++){
+		L->Data[i] = L->Data[i + 1];
+	}
+	L->Last--;
+	return true;
+}
+//C语言中malloc函数申请结构体空间必须加struct
