@@ -3,6 +3,7 @@ class Solution:
         Bhash = {}
         for str in B:
             bhash = {}
+            for s in str:
                 if not s in bhash:
                     bhash[s] = 1
                 else: bhash[s] +=1
